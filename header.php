@@ -48,7 +48,20 @@
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-secondary" href="#">За контакт</a>
+	<?php // We load the array of items in the variable $items
+		$menuLocations = get_nav_menu_locations();
+		$items = wp_get_nav_menu_items($menuLocations['ddqnov-menu']);
+
+		// We check that the array is not empty 
+		if( !empty( $items ) ): ?>
+
+		<?php foreach ( $items as $item ): ?>
+		<a class="p-2 link-secondary" href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a>
+		<?php endforeach; ?>
+
+		<?php else: ?> 
+		<p class="msg msg--error">Няма добавени линкове или менюто 'ddqnov' не е добавено.</p>
+	<?php endif; ?>
     </nav>
   </div>
 </div>
