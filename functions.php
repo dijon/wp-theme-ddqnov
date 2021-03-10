@@ -8,3 +8,9 @@ function wpb_ddqnov_menu() {
 	]);
 }
 add_action('init', 'wpb_ddqnov_menu');
+
+function image_tag_class($class) {
+    $class .= ' img-fluid';
+    return $class;
+}
+add_filter('get_image_tag_class', 'image_tag_class' );
