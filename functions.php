@@ -46,3 +46,11 @@ function remove_page_from_query_string($query_string)
     return $query_string;
 }
 add_filter('request', 'remove_page_from_query_string');
+
+// enable sessions
+function register_my_session(){
+    if( ! session_id() ) {
+        session_start();
+    }
+}
+add_action('init', 'register_my_session');
