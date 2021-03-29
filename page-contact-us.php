@@ -38,7 +38,7 @@ $email = $_POST['message_email'];
 $message = $_POST['message_text'];
 $human = $_POST['message_human'];
 
-if ($human != $_SESSION['human'][0]) {
+if (($human != $_SESSION['human'][0]) || $_SESSION['human'][0] === null) {
     $_SESSION['human'] = $captcha;
 }
 
